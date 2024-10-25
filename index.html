@@ -1,0 +1,132 @@
+html
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Proposal Journey</title>
+    <style>
+        body {
+            font-family: 'Arial', sans-serif;
+            text-align: center;
+            background-color: #fce4ec;
+            padding: 50px;
+            transition: all 0.5s ease;
+        }
+        .container {
+            background-color: white;
+            border-radius: 10px;
+            padding: 30px;
+            box-shadow: 0 5px 15px rgba(0, 0, 0, 0.2);
+            width: 80%;
+            max-width: 400px;
+            margin: auto;
+        }
+        h1 {
+            color: #d81b60;
+        }
+        p {
+            font-size: 14px;
+            color: #ad1457;
+        }
+        .button {
+            padding: 10px 20px;
+            margin: 20px 10px;
+            border: none;
+            border-radius: 5px;
+            background-color: #d81b60;
+            color: white;
+            cursor: pointer;
+            font-size: 18px;
+        }
+        .button:hover {
+            background-color: #ad1457;
+        }
+        #no {
+            position: relative;
+        }
+        .hidden {
+            display: none;
+        }
+        .animated-img {
+            width: 80%;
+            max-width: 300px;
+            border-radius: 10px;
+            margin: 20px 0;
+        }
+    </style>
+    <script>
+        let currentPage = 1;
+
+        function goToNextPage() {
+            currentPage++;
+            displayPage(currentPage);
+        }
+
+        function goToFinalPage() {
+            currentPage = 5;
+            displayPage(currentPage);
+        }
+
+        function avoidNoButton() {
+            const noButton = document.getElementById('no');
+            noButton.style.position = 'absolute';
+            noButton.style.top = `${Math.random() * 300}px`;
+            noButton.style.left = `${Math.random() * 300}px`;
+        }
+
+        function displayPage(page) {
+            const pages = document.querySelectorAll('.page');
+            pages.forEach((p) => p.classList.add('hidden'));
+            document.getElementById(`page${page}`).classList.remove('hidden');
+        }
+
+        window.onload = function() {
+            displayPage(1);
+        };
+    </script>
+</head>
+<body>
+    <!-- Page 1 -->
+    <div class="container page" id="page1">
+        <h1>Do you love me? ❤️</h1>
+        <p>~raj tera hi hai</p>
+        <img src="https://media.giphy.com/media/3oz8xKaR836UJOYeOc/giphy.gif" alt="Love Animation" class="animated-img">
+        <button class="button" onclick="goToFinalPage()">Yes 💖</button>
+        <button class="button" onclick="goToNextPage()">No 😢</button>
+    </div>
+
+    <!-- Page 2 -->
+    <div class="container page hidden" id="page2">
+        <h1>Soch le ache se! 🤔</h1>
+        <img src="https://media.giphy.com/media/3oEjI6SIIHBdRxXI40/giphy.gif" alt="Thinking Animation" class="animated-img">
+        <button class="button" onclick="goToFinalPage()">Yes 💖</button>
+        <button class="button" onclick="goToNextPage()">No 😢</button>
+    </div>
+
+    <!-- Page 3 -->
+    <div class="container page hidden" id="page3">
+        <h1>Ek aur baar soch le! 😌</h1>
+        <p>kyu aisa kr rahi hai...</p>
+        <img src="https://media.giphy.com/media/13UZisxBxkjPwI/giphy.gif" alt="Please Think Again" class="animated-img">
+        <button class="button" onclick="goToFinalPage()">Yes 💖</button>
+        <button class="button" onclick="goToNextPage()">No 😢</button>
+    </div>
+
+    <!-- Page 4 -->
+    <div class="container page hidden" id="page4">
+        <h1>Manja na! Kitna bhav khaegi 😂</h1>
+        <p>bohut galat baat hai</p>
+        <img src="https://media.giphy.com/media/l0Exk8EUzSLsrErEQ/giphy.gif" alt="Moving Away Animation" class="animated-img">
+        <button class="button" onclick="goToFinalPage()">Yes 💖</button>
+        <button class="button" id="no" onmouseover="avoidNoButton()">No 😢</button>
+    </div>
+
+    <!-- Page 5 -->
+    <div class="container page hidden" id="page5">
+        <h1>Hehehehe, I knew it! 😄💖</h1>
+        <p>Thank you for saying yes! You made my day! 🎉</p>
+        <img src="https://media.giphy.com/media/26xBJuYwJr4r1n0PK/giphy.gif" alt="Happy Celebration Animation" class="animated-img">
+    </div>
+</body>
+</html>
